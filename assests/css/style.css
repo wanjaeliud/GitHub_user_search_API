@@ -135,3 +135,16 @@ form .form-input input::placeholder{
   color: var(--font-light);
 }
 
+/* no match for user */
+.error-message{
+  color: red;
+  position: absolute;
+  right: 28%;
+  font-weight: 700;
+  font-size: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.hidden{
+  display: none;
+}
