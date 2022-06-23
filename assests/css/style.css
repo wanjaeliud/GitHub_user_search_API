@@ -1,30 +1,27 @@
-* {
-  box-sizing: border-box;
+*{
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
+  font-family: 'Space Mono', monospace;
 }
+
 :root{
   --accent-blue: #0079FF;
   --white: #FEFEFE;
 }
 
-
-button, a{
-  cursor: pointer;
-}
-
-.hidden{
-  display: none;
-}
-
-body {
+body{
   background-color: var(--secondary-color);
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  height: 100%;
+
 }
+
 h1, h2, h3, h4{
-  color: black;
+  color: var(--font-dark);
 }
 
 h1{
@@ -49,24 +46,18 @@ h4{
   line-height: 20px;
 }
 
-.container {
-  border: 1px solid red;
-  width: 60%;
-  box-shadow: 0px 0px 0px 0px;
+
+button, a{
+  cursor: pointer;
 }
 
-.logo {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-}
-.logo button {
-  background: none;
-  border: none;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
+
+body[data-theme="dark"]{
+  --primary-color: #1E2A47;
+  --secondary-color: #141D2F;
+  --font-dark: #fff;
+  --font-light: #fff;
+  --shadow: 0px 0px 0px 0px;
 }
 
 body[data-theme="light"]{
@@ -77,16 +68,34 @@ body[data-theme="light"]{
   --shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.198567);
 }
 
-body[data-theme="dark"]{
-  --primary-color: #1E2A47;
-  --secondary-color: #141D2F;
-  --font-dark: #fff;
-  --font-light: #fff;
-  --shadow: 0px 0px 0px 0px;
+
+.desktop-image{
+  display: none;
+}
+
+.container{
+  width: 100%;
+  padding: 1.5rem;
+}
+
+.logo{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 36px;
+}
+
+.logo button{
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  color: var(--font-light)
 }
 
 
-/* style search bar */
+
 form{
   width: 100%;
   display: flex;
@@ -135,7 +144,14 @@ form .form-input input::placeholder{
   color: var(--font-light);
 }
 
-/* no match for user */
+
+/*================================
+no match for user
+=================================*/
+.hidden{
+  display: none;
+}
+
 .error-message{
   color: red;
   position: absolute;
@@ -145,6 +161,87 @@ form .form-input input::placeholder{
   top: 50%;
   transform: translateY(-50%);
 }
-.hidden{
-  display: none;
+
+
+/*===================================
+user profile
+=====================================*/
+.card{
+  box-shadow: var(--shadow);
+  border-radius: 15px;
+  background-color: var(--primary-color);
+  padding: 1.5rem;
+  padding-bottom: 3rem;
 }
+
+.card .header{
+  display: flex;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.user-name{
+  margin-bottom: 6px;
+}
+
+.user-name h1{
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+.user-name .handler{
+  color: var(--accent-blue);
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.user-name .handler:hover{
+  text-decoration: underline;
+}
+
+.joined{
+  font-size: 13px;
+  color: var(--font-light);
+  font-weight: 300;
+}
+
+.header img{
+  border-radius: 50%;
+}
+
+.body p{
+  color: var(--font-light);
+  font-weight: 300;
+  font-size: 13px;
+  line-height: 25px;
+  margin-bottom: 1.5rem;
+}
+
+.stats{
+  display: flex;
+  background-color: var(--secondary-color);
+  border-radius: 15px;
+  padding: 18px 14px;
+  justify-content: space-around;
+  margin-bottom: 1.5rem;
+}
+
+.stat{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stat h4:first-child{
+  font-size: 11px;
+  font-weight: 300;
+}
+
+.stat h4:last-child{
+  font-size: 16px;
+  font-weight: bold;
+}
+
+
