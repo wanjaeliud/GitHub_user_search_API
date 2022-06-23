@@ -1,3 +1,6 @@
+/*=============================================
+default styling 
+==============================================*/
 *{
   padding: 0;
   margin: 0;
@@ -51,7 +54,9 @@ button, a{
   cursor: pointer;
 }
 
-
+/*===========================================================
+changing page theme
+============================================================*/
 body[data-theme="dark"]{
   --primary-color: #1E2A47;
   --secondary-color: #141D2F;
@@ -94,7 +99,9 @@ body[data-theme="light"]{
   color: var(--font-light)
 }
 
-
+/*===============================================
+search bar
+================================================*/
 
 form{
   width: 100%;
@@ -242,6 +249,36 @@ user profile
 .stat h4:last-child{
   font-size: 16px;
   font-weight: bold;
+}
+
+/*===========================================
+user stats
+=============================================*/
+.footer ul{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  list-style: none;
+  font-size: 13px;
+  color: var(--font-light)
+}
+
+.footer ul li{
+  display: flex;
+  flex-direction: row;
+  gap: 13px;
+}
+.footer ul li:first-child{
+  gap: 19px;
+}
+
+.footer ul a{
+  text-decoration: none;
+  color: var(--font-light);
+}
+
+.footer ul a:hover{
+  text-decoration: underline;
 }
 
 
