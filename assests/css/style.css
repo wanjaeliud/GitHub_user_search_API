@@ -8,6 +8,7 @@
   --white: #FEFEFE;
 }
 
+
 button, a{
   cursor: pointer;
 }
@@ -17,7 +18,7 @@ button, a{
 }
 
 body {
-  background-color: #E1E7F4;
+  background-color: var(--secondary-color);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -67,7 +68,6 @@ h4{
   align-items: center;
   gap: 20px;
 }
-
 
 body[data-theme="light"]{
   --primary-color: #fff;
@@ -134,3 +134,4 @@ form .form-input input{
 form .form-input input::placeholder{
   color: var(--font-light);
 }
+
