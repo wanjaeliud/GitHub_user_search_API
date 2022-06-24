@@ -282,3 +282,103 @@ user stats
 }
 
 
+@media screen and (min-width: 600px){
+
+  form .form-input input{
+      height: 69px;
+  }
+
+  .form-input button{
+      font-size: 16px;
+  }
+
+  form .form-input input::placeholder, form .form-input input{
+      font-size: 18px;
+  }
+  .error-message{
+      font-size: 18px;
+  }
+
+  .user-name h1{
+      font-size: 26px;
+  }
+
+  .user-name .handler{
+      font-size: 16px;
+  }
+
+  .header img{
+      width: 117px;
+      height: 117px;
+  }
+
+  .container{
+      max-width: 573px;
+  }
+
+  .body p{
+      font-size: 15px;
+  }
+
+  .stat h4:first-child{
+      font-size: 13px;
+      font-weight: 300;
+  }
+
+  .stat h4:last-child{
+      font-size: 22px;
+      font-weight: bold;
+  }
+
+  .footer ul{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      column-gap: 100px;
+      row-gap: 30px;
+  }
+
+  .footer ul li{
+      font-size: 15px;
+  }
+}
+
+
+
+@media screen and (min-width: 1024px){
+  .user-info{
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+  }
+
+  .joined{
+      font-size: 15px;
+  }
+
+  .header img{
+      display: none;
+  }
+
+  .container{
+      max-width: 730px;
+  }
+
+  .desktop-image{
+      display: inline-block;
+      border-radius: 50%;
+      margin-right: 2.25rem;
+  }
+
+  .card{
+      display: flex;
+      padding: 3rem;
+  }
+  form{
+      margin-bottom: 1.5rem;
+  }
+
+  .footer ul{
+      column-gap: 50px;
+  }
+}
