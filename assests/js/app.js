@@ -105,3 +105,21 @@ const formateDate = (date) => {
   return `${day} ${month} ${year}`;
 }
 
+/*============================================
+update user stats
+=============================================*/
+
+const updateStats = (data) => {
+  // Update stats
+  // Repo number
+  const repoNumber = select('.repo-number');
+  repoNumber.innerText = data.public_repos ?? 0;
+  // Followers
+  const followers = select('.followers-number');
+  followers.innerText = data.followers ?? 0;
+  // Following
+  const following = select('.following-number');
+  following.innerText = data.following ?? 0;
+}
+
+
