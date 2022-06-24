@@ -19,7 +19,7 @@ In this project, we use GitHub users API to pull  user profile data and display 
 ### [Features](#features)
 * Search bar
 * list user profile
-
+* [Figma Design](#https://www.figma.com/file/MahTWj2RHyPUd4xzgHePYZ/Devs-Connect?node-id=0%3A1) <br>
 <img src="./assests/images/page.png" width="500px">
 
 ***
