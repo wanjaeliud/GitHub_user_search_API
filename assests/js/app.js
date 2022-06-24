@@ -151,3 +151,35 @@ function updateSocials(data) {
 
 }
 
+
+/*====================================
+get user bio 
+====================================*/
+
+
+function updateUi(data){
+  //Update the image
+  const imgEl = [...select('.card .profile-image', true)];
+  imgEl.forEach((image) => image.src = data.avatar_url);
+
+  // Update the name.
+  const userNameEl = select('.user-name h1');
+  userNameEl.innerHTML = data.name ?? 'Not available';
+
+  // Update handler.
+  const handlerEl = select('.handler');
+  handlerEl.href = data.html_url;
+  handlerEl.innerText = `@${data.login}`;
+
+  // Update joined section
+  const joinedEl = select('.joined');
+  joinedEl.innerText = `Joined ${formateDate(data.created_at)}`;
+
+  // Update the bio
+  const bioEl = select('.bio');
+  bioEl.innerText = data.bio ?? 'It seem like there is no bio...';
+
+  updateStats(data);
+
+  updateSocials(data);
+}
