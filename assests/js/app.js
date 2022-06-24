@@ -87,3 +87,21 @@ async function searchUsername(username){
   updateUi(data);
 
 }
+
+/*====================================
+get the date a user joined
+=====================================*/
+const formateDate = (date) => {
+
+  const created_at = new Date(date);
+
+  const year = created_at.getFullYear();
+
+  const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  const month = months[created_at.getMonth()];
+
+  const day = created_at.getDate();
+
+  return `${day} ${month} ${year}`;
+}
+
