@@ -9,11 +9,21 @@ function select(selector, all = false){
 /*====================================================
 function to switch in betweeen themes
 ======================================================*/
+const setThemeFromLocal = () => {
+  let theme = JSON.parse(localStorage.getItem('theme'));
+
+  if(! theme){
+      return;
+  }
+
+  updateTheme(theme);
+}
+
 const toggleTheme = () => {
   const themes = {
     light: {
       code: 'dark',
-      name: 'light',
+      name: 'Light',
       icon: './assests/images/sun.png',
     },
     dark: {
@@ -28,11 +38,52 @@ const toggleTheme = () => {
   updateTheme(theme)
 }
 
-const updateTheme = () => {
+const updateTheme = (theme) => {
   const body = document.querySelector('body')
   const themeSwitcherTxt = document.querySelector('.theme-switcher span')
   const themeSwitcherImg = document.querySelector('.theme-switcher img')
   body.dataset.theme = theme.code.toLowerCase()
   themeSwitcherTxt.innerHTML = theme.name
   themeSwitcherImg.src = theme.icon
+}
+
+
+
+/*==========================================
+search for user using their userName
+=========================================*/
+
+const searchBtn = select('.search-button');
+const usernameField = select('#username');
+const errorMessage = select('.error-message');
+searchBtn.addEventListener('click', async (e) => {
+  e.preventDefault();
+
+  errorMessage.classList.add('hidden');
+
+
+  const username = usernameField.value;
+
+  if(username.trim().length === 0){
+      return;
+  }
+
+  searchUsername(username);
+
+});
+
+async function searchUsername(username){
+  const endpoint = 'https://api.github.com/users/' + username;
+
+  const response = await fetch(endpoint);
+
+  if(response.status === 404){
+      toggleErrorMessage();
+      return;
+  }
+
+  const data = await response.json();
+
+  updateUi(data);
+
 }
