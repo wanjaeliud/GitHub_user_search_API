@@ -13,14 +13,18 @@
 ***
 
 ### [Description](#description)
-
+In this project, we use GitHub users API to pull  user profile data and display  a specific user from the typed input.
 
  ****
 ### [Features](#features)
+* Search bar
+* list user profile
 
 ***
 ### [Behaviour Driven Development](#Behaviour-Driven-Development)
-
+* User story: I can search for a user
+* User story: I can see a user profile
+* User story: I can see a user stats and bio
 
  ****
 ### [Requirements](#requirements)
@@ -31,7 +35,7 @@
  ****
 ### [Installation Process](#installation-Process)
 
-* Clone to this repo : git clone git@github.com:wanjaeliud/smart_farmers.git
+* Clone to this repo : git clone git@github.com:wanjaeliud/GitHub_user_search_API.git
 * Unzip the downloaded files in a folder of choice.
 * Open the index file from the zipped file with any browser.
 
