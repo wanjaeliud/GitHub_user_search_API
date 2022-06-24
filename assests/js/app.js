@@ -1,6 +1,7 @@
 document.querySelector('.theme-switcher').addEventListener('click', toggleTheme)
 setThemeFromLocal();
 
+searchUsername('wanjaeliud')
 function select(selector, all = false){
   let method = ! all ? 'querySelector' : 'querySelectorAll';
   return document[method](selector);
@@ -9,7 +10,7 @@ function select(selector, all = false){
 /*====================================================
 function to switch in betweeen themes
 ======================================================*/
-const setThemeFromLocal = () => {
+function setThemeFromLocal(){
   let theme = JSON.parse(localStorage.getItem('theme'));
 
   if(! theme){
@@ -19,32 +20,42 @@ const setThemeFromLocal = () => {
   updateTheme(theme);
 }
 
-const toggleTheme = () => {
+function toggleTheme() {
+
   const themes = {
-    light: {
-      code: 'dark',
-      name: 'Light',
-      icon: './assests/images/sun.png',
-    },
-    dark: {
-      code: 'light',
-      name: 'Dark',
-      icon: './assests/images/moon.png',
-    }
+      light: {
+          code: 'dark',
+          name: 'Light',
+          icon: './assests/images/sun.png',
+      },
+      dark: {
+          code: 'light',
+          name: 'Dark',
+          icon: './assests/images/moon.png',
+      }
   }
-  const body = document.querySelector('body')
-  let theme = themes[body.dataset.theme]
-  localStorage.setItem('theme', JSON.stringify(theme))
-  updateTheme(theme)
+  const body = document.querySelector('body');
+
+  let theme = themes[body.dataset.theme];
+
+  localStorage.setItem('theme', JSON.stringify(theme));
+  updateTheme(theme);
 }
 
-const updateTheme = (theme) => {
-  const body = document.querySelector('body')
-  const themeSwitcherTxt = document.querySelector('.theme-switcher span')
-  const themeSwitcherImg = document.querySelector('.theme-switcher img')
-  body.dataset.theme = theme.code.toLowerCase()
-  themeSwitcherTxt.innerHTML = theme.name
-  themeSwitcherImg.src = theme.icon
+function updateTheme(theme){
+  const body = document.querySelector('body');
+  const themeSwitcherTxt = document.querySelector('.theme-switcher span');
+  const themeSwitcherImg = document.querySelector('.theme-switcher img');
+  body.dataset.theme = theme.code.toLowerCase();
+  themeSwitcherTxt.innerHTML = theme.name;
+  themeSwitcherImg.src = theme.icon;
+}
+
+
+
+function toggleErrorMessage(){
+  const errorMessage = select('.error-message');
+  errorMessage.classList.toggle('hidden');
 }
 
 
@@ -52,46 +63,45 @@ const updateTheme = (theme) => {
 /*==========================================
 search for user using their userName
 =========================================*/
-
 const searchBtn = select('.search-button');
 const usernameField = select('#username');
 const errorMessage = select('.error-message');
 searchBtn.addEventListener('click', async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  errorMessage.classList.add('hidden');
+    errorMessage.classList.add('hidden');
 
 
-  const username = usernameField.value;
+    const username = usernameField.value;
 
-  if(username.trim().length === 0){
-      return;
-  }
+    if(username.trim().length === 0){
+        return;
+    }
 
-  searchUsername(username);
+    await searchUsername(username);
 
 });
 
 async function searchUsername(username){
-  const endpoint = 'https://api.github.com/users/' + username;
+    const endpoint = 'https://api.github.com/users/' + username;
 
-  const response = await fetch(endpoint);
+    const response = await fetch(endpoint);
 
-  if(response.status === 404){
-      toggleErrorMessage();
-      return;
-  }
+    if(response.status === 404){
+        toggleErrorMessage();
+        return;
+    }
 
-  const data = await response.json();
+    const data = await response.json();
 
-  updateUi(data);
+    updateUi(data);
 
 }
 
 /*====================================
 get the date a user joined
 =====================================*/
-const formateDate = (date) => {
+function formateDate(date) {
 
   const created_at = new Date(date);
 
@@ -109,17 +119,35 @@ const formateDate = (date) => {
 update user stats
 =============================================*/
 
-const updateStats = (data) => {
+function updateStats(data) {
   // Update stats
   // Repo number
-  const repoNumber = select('.repo-number');
-  repoNumber.innerText = data.public_repos ?? 0;
+  const repoEl = select('.repo-number');
+  repoEl.innerText = data.public_repos ?? 0;
   // Followers
-  const followers = select('.followers-number');
-  followers.innerText = data.followers ?? 0;
+  const followersEl = select('.followers-number');
+  followersEl.innerText = data.followers ?? 0;
   // Following
-  const following = select('.following-number');
-  following.innerText = data.following ?? 0;
+  const followingEl = select('.following-number');
+  followingEl.innerText = data.following ?? 0;
 }
 
+function updateSocials(data) {
+
+  const locationEl = select('.location');
+  locationEl.innerText = data.location ?? 'Not available';
+
+  const websiteEl = select('.website');
+  websiteEl.href = !data.blog?.trim() ? 'Not available' : data.blog;
+  websiteEl.innerText = 'Website';
+
+  const twitterEl = select('.twitter');
+  let twitterhandler = data.twitter_username ?? 'Not available'
+  twitterEl.href = twitterhandler !== 'Not available' ? "https://twitter.com/" + twitterhandler : '#'
+  twitterEl.innerText = twitterhandler;
+
+  const companyEl = select('.company');
+  companyEl.innerText = data.company ?? 'Not available';
+
+}
 
