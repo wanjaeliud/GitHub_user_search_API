@@ -20,6 +20,8 @@ In this project, we use GitHub users API to pull  user profile data and display 
 * Search bar
 * list user profile
 
+<img src="./assests/images/page.png" width="500px">
+
 ***
 ### [Behaviour Driven Development](#Behaviour-Driven-Development)
 * User story: I can search for a user
