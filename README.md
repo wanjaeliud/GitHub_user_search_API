@@ -45,7 +45,7 @@ In this project, we use GitHub users API to pull  user profile data and display 
 ### [Live Link](#Live-Link)
 
 - Click the live link at the about section in the main branch or direct link below <br>
-- [live link](#https://wanjaeliud.github.io/GitHub_user_search_API/)
+- [live link](. https://wanjaeliud.github.io/GitHub_user_search_API/)
 
 
 ***
